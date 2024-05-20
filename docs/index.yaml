@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  tgi:
+  - apiVersion: v2
+    appVersion: "1.4"
+    created: "2024-05-20T03:18:40.568482187Z"
+    description: The Helm chart for HuggingFace Text Generation Inference Server
+    digest: cc9280b606484eef3fa45d70abcde070c2ea6685118ea4a1b6ed0c30543300e8
+    name: tgi
+    type: application
+    urls:
+    - https://vigilant-adventure-p8qojqk.pages.github.io/tgi-0.1.0.tgz
+    version: 0.1.0
+generated: "2024-05-20T03:18:40.567937278Z"
