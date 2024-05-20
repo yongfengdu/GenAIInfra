@@ -3,13 +3,13 @@ entries:
   codegen:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-05-20T04:58:55.025393215Z"
+    created: "2024-05-20T06:11:46.086985754Z"
     dependencies:
     - name: tgi
       repository: https://yongfengdu.github.io/GenAIInfra/
       version: 0.1.0
     description: The Helm chart to deploy CodeGen
-    digest: 86d9182e7082617c1186d3aeb7dad6d287d2d0681788a955f7c5d69d0748642e
+    digest: 9224c49d142adf8ae7817433b4649d8a9257218b36ab539a516a92c64cfa8f7b
     name: codegen
     type: application
     urls:
@@ -18,7 +18,7 @@ entries:
   tgi:
   - apiVersion: v2
     appVersion: "1.4"
-    created: "2024-05-20T04:58:55.026434719Z"
+    created: "2024-05-20T06:11:46.088132573Z"
     description: The Helm chart for HuggingFace Text Generation Inference Server
     digest: cc9280b606484eef3fa45d70abcde070c2ea6685118ea4a1b6ed0c30543300e8
     name: tgi
@@ -26,4 +26,4 @@ entries:
     urls:
     - tgi-0.1.0.tgz
     version: 0.1.0
-generated: "2024-05-20T04:58:55.022913074Z"
+generated: "2024-05-20T06:11:46.084229696Z"
