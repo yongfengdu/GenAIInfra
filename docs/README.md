@@ -8,7 +8,7 @@ Please refer to Helm's [documentation](https://helm.sh/docs/) to get started.
 Once Helm is set up properly, add the repo as follows:
 
 ```console
-helm repo add opea https://intel-sandbox.github.io/GenAIInfra
+helm repo add opea https://yongfengdu.github.io/GenAIInfra
 ```
 
 You can then run `helm search repo opea` to see the charts.

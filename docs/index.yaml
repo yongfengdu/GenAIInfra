@@ -9,6 +9,6 @@ entries:
     name: tgi
     type: application
     urls:
-    - https://vigilant-adventure-p8qojqk.pages.github.io/tgi-0.1.0.tgz
+      - https://yongfengdu.github.io/GenAIInfra/tgi-0.1.0.tgz
     version: 0.1.0
 generated: "2024-05-20T03:18:40.567937278Z"
