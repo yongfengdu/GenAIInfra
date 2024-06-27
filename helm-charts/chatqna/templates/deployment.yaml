@@ -76,3 +76,41 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chaqna-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chaqna-ui
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "true"
+      labels:
+        app: chaqna-ui
+    spec:
+      nodeSelector:
+        demo: "chatqna"
+      topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: ScheduleAnyway
+        labelSelector:
+               matchLabels:
+                 app: chaqna-ui
+      containers:
+      - env:
+        - name: CHAT_BASE_URL
+          value: "http://{{ .Values.externalIP }}:30888/v1/chatqna"
+        - name: UPLOAD_FILE_BASE_URL
+          value: "http://{{ .Values.externalIP }}:30452/v1/dataprep"
+        image: opea/chatqna-ui:latest
+        imagePullPolicy: IfNotPresent
+        name: chaqna-ui
+        ports:
+        - containerPort: 5173
+      serviceAccountName: default
