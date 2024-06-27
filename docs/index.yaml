@@ -1,9 +1,36 @@
 apiVersion: v1
 entries:
+  chatqna:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2024-06-27T15:35:43.810632958Z"
+    dependencies:
+    - name: llm-uservice
+      repository: file://../common/llm-uservice
+      version: 0.1.0
+    - name: embedding-usvc
+      repository: file://../common/embedding-usvc
+      version: 0.1.0
+    - name: reranking-usvc
+      repository: file://../common/reranking-usvc
+      version: 0.1.0
+    - name: retriever-usvc
+      repository: file://../common/retriever-usvc
+      version: 0.1.0
+    - name: data-prep
+      repository: file://../common/data-prep
+      version: 0.1.0
+    description: The Helm chart to deploy ChatQnA
+    digest: 0fefa23c6cb02e65138efa54ae7749bc9fdb107a9a3ff4db0bceea5f608e0cd4
+    name: chatqna
+    type: application
+    urls:
+    - https://yongfengdu.github.io/GenAIInfra/chatqna-0.1.0.tgz
+    version: 0.1.0
   codegen:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-05-20T06:15:51.370058119Z"
+    created: "2024-06-27T15:35:43.811984853Z"
     dependencies:
     - name: tgi
       repository: https://yongfengdu.github.io/GenAIInfra/
@@ -13,17 +40,17 @@ entries:
     name: codegen
     type: application
     urls:
-    - codegen-0.1.0.tgz
+    - https://yongfengdu.github.io/GenAIInfra/codegen-0.1.0.tgz
     version: 0.1.0
   tgi:
   - apiVersion: v2
     appVersion: "1.4"
-    created: "2024-05-20T06:15:51.371100201Z"
+    created: "2024-06-27T15:35:43.812692802Z"
     description: The Helm chart for HuggingFace Text Generation Inference Server
     digest: cc9280b606484eef3fa45d70abcde070c2ea6685118ea4a1b6ed0c30543300e8
     name: tgi
     type: application
     urls:
-    - tgi-0.1.0.tgz
+    - https://yongfengdu.github.io/GenAIInfra/tgi-0.1.0.tgz
     version: 0.1.0
-generated: "2024-05-20T06:15:51.367516014Z"
+generated: "2024-06-27T15:35:43.801442958Z"
