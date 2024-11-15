@@ -6,7 +6,7 @@ entries:
   agent:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.016211262Z"
+    created: "2024-11-15T04:54:09.413972395Z"
     dependencies:
     - condition: tgi.enabled
       name: tgi
@@ -17,7 +17,7 @@ entries:
       repository: file://../vllm
       version: 1.0-dev
     description: The Helm chart for deploying agent microservice
-    digest: d7a8d93edde0d2ec8aee5ab521345c99bb3eabdc30f7f3fbb432b8972316c83b
+    digest: 8e464552c502af9f2f0392dc230e94d2f6f29411f7e70e451a3dbf020c913ac0
     name: agent
     type: application
     urls:
@@ -26,7 +26,7 @@ entries:
   agentqna:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.050215272Z"
+    created: "2024-11-15T04:54:09.448674969Z"
     dependencies:
     - alias: worker
       name: agent
@@ -62,7 +62,7 @@ entries:
       repository: file://../common/data-prep
       version: 1.0-dev
     description: The Helm chart to deploy AgentQnA
-    digest: 542663e51da231107f709ee349adb0628952a63afca1396b44ef9d6e6199a509
+    digest: 11cfec941b00e3b22717e83f9fd84d7b871a96f182f28c910d8574ab683b4836
     name: agentqna
     type: application
     urls:
@@ -71,7 +71,7 @@ entries:
   asr:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.052634296Z"
+    created: "2024-11-15T04:54:09.451276171Z"
     dependencies:
     - condition: autodependency.enabled
       name: whisper
@@ -86,14 +86,14 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.052043381Z"
+    created: "2024-11-15T04:54:09.4506241Z"
     dependencies:
     - condition: whisper.enabled
       name: whisper
       repository: file://../whisper
       version: 1.0-dev
     description: The Helm chart for deploying asr as microservice
-    digest: 077a907cf83452115a0a50326797d98cd41471c6a661de31c4ca984386bbd1e4
+    digest: 24bf906fb0d3a268881f9f112a9be93e11a516c0d7c7bb1d82e39f652db992f3
     name: asr
     type: application
     urls:
@@ -101,7 +101,7 @@ entries:
     version: 1.0-dev
   - apiVersion: v2
     appVersion: v0.9
-    created: "2024-11-15T02:17:51.051435694Z"
+    created: "2024-11-15T04:54:09.449985945Z"
     dependencies:
     - condition: autodependency.enabled
       name: whisper
@@ -116,7 +116,7 @@ entries:
     version: 0.9.0
   - apiVersion: v2
     appVersion: v0.8
-    created: "2024-11-15T02:17:51.050835953Z"
+    created: "2024-11-15T04:54:09.449356395Z"
     dependencies:
     - condition: autodependency.enabled
       name: whisper
@@ -132,7 +132,7 @@ entries:
   audioqna:
   - apiVersion: v2
     appVersion: "1.1"
-    created: "2024-11-15T02:17:51.056070383Z"
+    created: "2024-11-15T04:54:09.454712027Z"
     dependencies:
     - name: asr
       repository: file://../common/asr
@@ -153,7 +153,7 @@ entries:
       repository: file://../common/llm-uservice
       version: 1.0-dev
     description: The Helm chart to deploy AudioQnA
-    digest: 7ecd15c42493d3fa8dc4fe091fd7d10dc8a8a619c0a35ade42a45d11e58c02b3
+    digest: 74a0e70bd77457abf694707a6db0f04aacb9a97926aa4826039d82e93e0c8514
     name: audioqna
     type: application
     urls:
@@ -162,14 +162,14 @@ entries:
   chathistory-usvc:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.056632334Z"
+    created: "2024-11-15T04:54:09.4553114Z"
     dependencies:
     - condition: mongodb.enabled
       name: mongodb
       repository: file://../mongodb
       version: 1.0-dev
     description: The Helm chart for deploying chat history as microservice
-    digest: e06dac6da3f69019f2b501ae84954dac8e6585d23fbb505b98aa5818986b547d
+    digest: b300d72373419f680c7774b72753352831b8628512923648a863ee6ad54650fe
     name: chathistory-usvc
     type: application
     urls:
@@ -178,7 +178,7 @@ entries:
   chatqna:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.107498285Z"
+    created: "2024-11-15T04:54:09.509379735Z"
     dependencies:
     - alias: tgi-guardrails
       condition: guardrails-usvc.enabled
@@ -229,7 +229,7 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.10115986Z"
+    created: "2024-11-15T04:54:09.501800858Z"
     dependencies:
     - alias: tgi-guardrails
       condition: guardrails-usvc.enabled
@@ -263,7 +263,7 @@ entries:
       repository: file://../common/ui
       version: 1.0-dev
     description: The Helm chart to deploy ChatQnA
-    digest: dbcca17fd40eb7b97bb2633eca0d4dc6be437a3d31138a011232d1426909ebfd
+    digest: 7777ee48d90f4b01a66cb8ccb1a1a5274fdef0060df7851d6c8e460ebc2d4b3d
     name: chatqna
     type: application
     urls:
@@ -271,7 +271,7 @@ entries:
     version: 1.0-dev
   - apiVersion: v2
     appVersion: v0.9
-    created: "2024-11-15T02:17:51.066890971Z"
+    created: "2024-11-15T04:54:09.465256091Z"
     dependencies:
     - name: tgi
       repository: file://../common/tgi
@@ -309,7 +309,7 @@ entries:
     version: 0.9.0
   - apiVersion: v2
     appVersion: v0.8
-    created: "2024-11-15T02:17:51.061855603Z"
+    created: "2024-11-15T04:54:09.460873542Z"
     dependencies:
     - name: tgi
       repository: file://../common/tgi
@@ -348,7 +348,7 @@ entries:
   chatqna-ui:
   - apiVersion: v2
     appVersion: v0.9
-    created: "2024-11-15T02:17:51.108556554Z"
+    created: "2024-11-15T04:54:09.51048752Z"
     description: A Helm chart to the UI for chatQnA workload
     digest: fc839e2f78ac5311024ca75a74df343baef88a032d96858160eb4911a2c1ee2b
     name: chatqna-ui
@@ -358,7 +358,7 @@ entries:
     version: 0.9.0
   - apiVersion: v2
     appVersion: v0.8
-    created: "2024-11-15T02:17:51.10799811Z"
+    created: "2024-11-15T04:54:09.509957047Z"
     description: A Helm chart to the UI for chatQnA workload
     digest: 28cc0a5109405b7e1ec9e6a71941b1dd000803a27bd9da7b77bb92eab2195923
     name: chatqna-ui
@@ -369,7 +369,7 @@ entries:
   codegen:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.11462778Z"
+    created: "2024-11-15T04:54:09.518934553Z"
     dependencies:
     - name: tgi
       repository: file://../common/tgi
@@ -390,7 +390,7 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.113229715Z"
+    created: "2024-11-15T04:54:09.517517759Z"
     dependencies:
     - name: tgi
       repository: file://../common/tgi
@@ -403,7 +403,7 @@ entries:
       repository: file://../common/ui
       version: 1.0-dev
     description: The Helm chart to deploy CodeGen
-    digest: d22136fef880baffbeac9b671a4f09a8aad3cebdca4c98711d8891a23148f467
+    digest: 6266645c2ef0c28f380ad0d086ac5eb8e142dc766ba0a69f1442f5a3d53fd933
     name: codegen
     type: application
     urls:
@@ -411,7 +411,7 @@ entries:
     version: 1.0-dev
   - apiVersion: v2
     appVersion: v0.9
-    created: "2024-11-15T02:17:51.111169521Z"
+    created: "2024-11-15T04:54:09.514063259Z"
     dependencies:
     - name: tgi
       repository: file://../common/tgi
@@ -428,7 +428,7 @@ entries:
     version: 0.9.0
   - apiVersion: v2
     appVersion: v0.8
-    created: "2024-11-15T02:17:51.110080314Z"
+    created: "2024-11-15T04:54:09.512533834Z"
     dependencies:
     - name: tgi
       repository: file://../common/tgi
@@ -446,7 +446,7 @@ entries:
   codetrans:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.121523444Z"
+    created: "2024-11-15T04:54:09.526397937Z"
     dependencies:
     - name: tgi
       repository: file://../common/tgi
@@ -467,7 +467,7 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.120025391Z"
+    created: "2024-11-15T04:54:09.524785247Z"
     dependencies:
     - name: tgi
       repository: file://../common/tgi
@@ -480,7 +480,7 @@ entries:
       repository: file://../common/ui
       version: 1.0-dev
     description: The Helm chart to deploy CodeTrans
-    digest: 74bb9ab7ea18a07ff082694266ebecbae83b9d7eaf692a81adcb122dd9bd3e5a
+    digest: 5a3cd62b05a14365b50db1ce17aad04e841cb26f2d557573afa51422a2e3d73c
     name: codetrans
     type: application
     urls:
@@ -488,7 +488,7 @@ entries:
     version: 1.0-dev
   - apiVersion: v2
     appVersion: v0.9
-    created: "2024-11-15T02:17:51.117528996Z"
+    created: "2024-11-15T04:54:09.521294604Z"
     dependencies:
     - name: tgi
       repository: file://../common/tgi
@@ -505,7 +505,7 @@ entries:
     version: 0.9.0
   - apiVersion: v2
     appVersion: v0.8
-    created: "2024-11-15T02:17:51.115781307Z"
+    created: "2024-11-15T04:54:09.520092553Z"
     dependencies:
     - name: tgi
       repository: file://../common/tgi
@@ -523,7 +523,7 @@ entries:
   data-prep:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.139677632Z"
+    created: "2024-11-15T04:54:09.544946468Z"
     dependencies:
     - condition: autodependency.enabled
       name: tei
@@ -542,7 +542,7 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.138720171Z"
+    created: "2024-11-15T04:54:09.544027717Z"
     dependencies:
     - condition: tei.enabled
       name: tei
@@ -557,7 +557,7 @@ entries:
       repository: https://zilliztech.github.io/milvus-helm/
       version: 4.2.12
     description: The Helm chart for deploying data prep as microservice
-    digest: 0f701c28ec59f1ccf83d4142c9cc61edeb170be20b54101b1ede13a49167267a
+    digest: 7c43ccf701958933d2b28c1a14dc94ea7dfe7ca58484d2ffde6cd8059d8bc6eb
     name: data-prep
     type: application
     urls:
@@ -565,7 +565,7 @@ entries:
     version: 1.0-dev
   - apiVersion: v2
     appVersion: v0.9
-    created: "2024-11-15T02:17:51.123197224Z"
+    created: "2024-11-15T04:54:09.52810764Z"
     dependencies:
     - condition: autodependency.enabled
       name: tei
@@ -584,7 +584,7 @@ entries:
     version: 0.9.0
   - apiVersion: v2
     appVersion: v0.8
-    created: "2024-11-15T02:17:51.122385155Z"
+    created: "2024-11-15T04:54:09.527268979Z"
     dependencies:
     - condition: autodependency.enabled
       name: tei
@@ -604,7 +604,7 @@ entries:
   docsum:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.145760449Z"
+    created: "2024-11-15T04:54:09.550763465Z"
     dependencies:
     - name: tgi
       repository: file://../common/tgi
@@ -625,7 +625,7 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.144100895Z"
+    created: "2024-11-15T04:54:09.549353353Z"
     dependencies:
     - name: tgi
       repository: file://../common/tgi
@@ -638,7 +638,7 @@ entries:
       repository: file://../common/ui
       version: 1.0-dev
     description: The Helm chart to deploy DocSum
-    digest: 7d203caf021d323e83b1b3e70072f1a823c71557c0134aa61cb9ec4ab0d5a6b2
+    digest: 66c0978c72513eaeb89626bf09041ff0d51f8704acea60265c42dffa9207ca13
     name: docsum
     type: application
     urls:
@@ -646,7 +646,7 @@ entries:
     version: 1.0-dev
   - apiVersion: v2
     appVersion: v0.9
-    created: "2024-11-15T02:17:51.14191136Z"
+    created: "2024-11-15T04:54:09.547172278Z"
     dependencies:
     - name: tgi
       repository: file://../common/tgi
@@ -663,7 +663,7 @@ entries:
     version: 0.9.0
   - apiVersion: v2
     appVersion: v0.8
-    created: "2024-11-15T02:17:51.14078322Z"
+    created: "2024-11-15T04:54:09.546056488Z"
     dependencies:
     - name: tgi
       repository: file://../common/tgi
@@ -681,7 +681,7 @@ entries:
   embedding-usvc:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.149806042Z"
+    created: "2024-11-15T04:54:09.554385304Z"
     dependencies:
     - condition: autodependency.enabled
       name: tei
@@ -696,14 +696,14 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.148099013Z"
+    created: "2024-11-15T04:54:09.553598791Z"
     dependencies:
     - condition: tei.enabled
       name: tei
       repository: file://../tei
       version: 1.0-dev
     description: The Helm chart for deploying embedding as microservice
-    digest: 152d19e1f347002bf4628d411ae34d0913cc3ede6544a548f907dbe28927f7da
+    digest: 1f022420221c8d54d07df60ad4807d6f955541d7906cde8687e0fac65a64e9be
     name: embedding-usvc
     type: application
     urls:
@@ -711,7 +711,7 @@ entries:
     version: 1.0-dev
   - apiVersion: v2
     appVersion: v0.9
-    created: "2024-11-15T02:17:51.14726357Z"
+    created: "2024-11-15T04:54:09.55210616Z"
     dependencies:
     - condition: autodependency.enabled
       name: tei
@@ -726,7 +726,7 @@ entries:
     version: 0.9.0
   - apiVersion: v2
     appVersion: v0.8
-    created: "2024-11-15T02:17:51.146498048Z"
+    created: "2024-11-15T04:54:09.551457305Z"
     dependencies:
     - condition: autodependency.enabled
       name: tei
@@ -742,7 +742,7 @@ entries:
   faqgen:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.151950353Z"
+    created: "2024-11-15T04:54:09.556543738Z"
     dependencies:
     - name: tgi
       repository: file://../common/tgi
@@ -755,7 +755,7 @@ entries:
       repository: file://../common/ui
       version: 1.0-dev
     description: The Helm chart to deploy FaqGen
-    digest: 0ce44c548519d94691d157a198fcf274fd8d656220fc229ff643d4ad8b43748d
+    digest: 3547a2f44d32cd9e34037007e6211835950e390f391ff36842afe38413160a67
     name: faqgen
     type: application
     urls:
@@ -764,7 +764,7 @@ entries:
   gmc:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.152522363Z"
+    created: "2024-11-15T04:54:09.557120468Z"
     description: A Helm chart for Kubernetes
     digest: d1d26d9e06970812dfcfdf54f72d507d46de4fbe752d9495f985fc9e3dce2962
     name: gmc
@@ -775,9 +775,9 @@ entries:
   gpt-sovits:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2024-11-15T02:17:51.152865304Z"
+    created: "2024-11-15T04:54:09.557446369Z"
     description: The Helm chart for deploying gpt-sovits as microservice
-    digest: 1dea40479631c259f999df6cb60dac9607f7bd227c9391874564bdb7c86bf0fd
+    digest: a2aa9182618cee9a2810778c936450d0573682409350695f48a48f2dec81975a
     name: gpt-sovits
     type: application
     urls:
@@ -786,7 +786,7 @@ entries:
   guardrails-usvc:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.154366111Z"
+    created: "2024-11-15T04:54:09.558882769Z"
     dependencies:
     - condition: autodependency.enabled
       name: tgi
@@ -801,14 +801,14 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.153619344Z"
+    created: "2024-11-15T04:54:09.558185162Z"
     dependencies:
     - condition: tgi.enabled
       name: tgi
       repository: file://../tgi
       version: 1.0-dev
     description: The Helm chart for deploying guardrails-usvc as microservice
-    digest: 12e0f7f0bc48ea64d8cc9ac75d88e1d96be89ec766b639bbadd93de8b2ac9ee1
+    digest: ae12a2ebfb8b72dfd6d1c8ed1341daefd6c4ae43fe1db08cd03411c28411cde9
     name: guardrails-usvc
     type: application
     urls:
@@ -817,7 +817,7 @@ entries:
   llm-uservice:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.158230091Z"
+    created: "2024-11-15T04:54:09.563069893Z"
     dependencies:
     - condition: autodependency.enabled
       name: tgi
@@ -832,7 +832,7 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.157490258Z"
+    created: "2024-11-15T04:54:09.56237433Z"
     dependencies:
     - condition: tgi.enabled
       name: tgi
@@ -843,7 +843,7 @@ entries:
       repository: file://../vllm
       version: 1.0-dev
     description: The Helm chart for deploying llm as microservice
-    digest: 65358117431eff43ccdef01406034e0cc50913466d65dcdf1823fd9e819d8b35
+    digest: a38905faa817ae658b9e58e7cc8810d333481b8866fc03d641dec4d629d9ebbe
     name: llm-uservice
     type: application
     urls:
@@ -851,7 +851,7 @@ entries:
     version: 1.0-dev
   - apiVersion: v2
     appVersion: v0.9
-    created: "2024-11-15T02:17:51.155633932Z"
+    created: "2024-11-15T04:54:09.561046352Z"
     dependencies:
     - condition: autodependency.enabled
       name: tgi
@@ -866,7 +866,7 @@ entries:
     version: 0.9.0
   - apiVersion: v2
     appVersion: v0.8
-    created: "2024-11-15T02:17:51.155004826Z"
+    created: "2024-11-15T04:54:09.559583522Z"
     dependencies:
     - condition: autodependency.enabled
       name: tgi
@@ -882,14 +882,14 @@ entries:
   lvm-uservice:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.15900425Z"
+    created: "2024-11-15T04:54:09.56386932Z"
     dependencies:
     - condition: tgi.enabled
       name: tgi
       repository: file://../tgi
       version: 1.0-dev
     description: The Helm chart for deploying lvm as microservice
-    digest: 0380699d3b8cb3201d54f3faeef0bd09a89097b1d758edff992fdad8aa5dc15f
+    digest: e0351a89c6f58a12b863cd30137a7167659aff0c3f2753646e6994e9886d6565
     name: lvm-uservice
     type: application
     urls:
@@ -898,9 +898,9 @@ entries:
   mongodb:
   - apiVersion: v2
     appVersion: 7.0.11
-    created: "2024-11-15T02:17:51.159268554Z"
+    created: "2024-11-15T04:54:09.564133124Z"
     description: The Helm chart for Redis Vector DB
-    digest: d7e7397b04324926c3670e16be75445f10b0a644087a1a34ddbbead4532446b2
+    digest: e8b073c1039b19dded782988964b67dd4ffb928699fe4e9ebc2a00277a3c6432
     name: mongodb
     type: application
     urls:
@@ -909,14 +909,14 @@ entries:
   prompt-usvc:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.159904614Z"
+    created: "2024-11-15T04:54:09.564686802Z"
     dependencies:
     - condition: mongodb.enabled
       name: mongodb
       repository: file://../mongodb
       version: 1.0-dev
     description: The Helm chart for deploying prompt as microservice
-    digest: 1109e33a0339e15c1998af1db8c70509d4c879b4ea473e0c84ef2af0a1ec2b0d
+    digest: 9079ef83e794aa303e02f2326d803f07553e23eeb94e7a7cd4febe25f4ed2a66
     name: prompt-usvc
     type: application
     urls:
@@ -925,7 +925,7 @@ entries:
   redis-vector-db:
   - apiVersion: v2
     appVersion: 7.2.0-v9
-    created: "2024-11-15T02:17:51.160997257Z"
+    created: "2024-11-15T04:54:09.5657218Z"
     description: The Helm chart for Redis Vector DB
     digest: ac7ea475adea2d53293269e8794de5d6cfaae2612c8e3ebc6211abad1999a65d
     name: redis-vector-db
@@ -935,9 +935,9 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: 7.2.0-v9
-    created: "2024-11-15T02:17:51.160745837Z"
+    created: "2024-11-15T04:54:09.565467675Z"
     description: The Helm chart for Redis Vector DB
-    digest: b068c0f80db614a56880df6e57a5f0727e979b14aa5f7a38310b5aebe6413cb8
+    digest: 817c80cb8fa03e7c77543701e7136fe1291c904c3a914c47cfdcf01cca64aa16
     name: redis-vector-db
     type: application
     urls:
@@ -945,7 +945,7 @@ entries:
     version: 1.0-dev
   - apiVersion: v2
     appVersion: 7.2.0-v9
-    created: "2024-11-15T02:17:51.160487895Z"
+    created: "2024-11-15T04:54:09.565207557Z"
     description: The Helm chart for Redis Vector DB
     digest: b7e2eea0ba792dec5f18f6f8764ecac6a8e356e98702423dda7638ea337b9bf4
     name: redis-vector-db
@@ -955,7 +955,7 @@ entries:
     version: 0.9.0
   - apiVersion: v2
     appVersion: 7.2.0-v9
-    created: "2024-11-15T02:17:51.160231836Z"
+    created: "2024-11-15T04:54:09.564947851Z"
     description: The Helm chart for Redis Vector DB
     digest: c2cbd22b00ae24834823ee7e89b324da2018b663b6c6f0dae2dff569872136ab
     name: redis-vector-db
@@ -966,7 +966,7 @@ entries:
   reranking-usvc:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.163610445Z"
+    created: "2024-11-15T04:54:09.569095535Z"
     dependencies:
     - condition: autodependency.enabled
       name: teirerank
@@ -981,14 +981,14 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.162969526Z"
+    created: "2024-11-15T04:54:09.568407216Z"
     dependencies:
     - condition: teirerank.enabled
       name: teirerank
       repository: file://../teirerank
       version: 1.0-dev
     description: The Helm chart for deploying reranking as microservice
-    digest: b1e231e11ddf9a4bcaef19aabb25611921d8917c721835791cf8bb5cd4b3fb8f
+    digest: 46785a9ecedd304cbc950d753254052c8ef180eb2ef2cb11422a097258fe3394
     name: reranking-usvc
     type: application
     urls:
@@ -996,7 +996,7 @@ entries:
     version: 1.0-dev
   - apiVersion: v2
     appVersion: v0.9
-    created: "2024-11-15T02:17:51.162246234Z"
+    created: "2024-11-15T04:54:09.567121783Z"
     dependencies:
     - condition: autodependency.enabled
       name: teirerank
@@ -1011,7 +1011,7 @@ entries:
     version: 0.9.0
   - apiVersion: v2
     appVersion: v0.8
-    created: "2024-11-15T02:17:51.161604634Z"
+    created: "2024-11-15T04:54:09.56632509Z"
     dependencies:
     - condition: autodependency.enabled
       name: teirerank
@@ -1027,7 +1027,7 @@ entries:
   retriever-usvc:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.182698503Z"
+    created: "2024-11-15T04:54:09.587736807Z"
     dependencies:
     - condition: autodependency.enabled
       name: tei
@@ -1046,7 +1046,7 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.181653809Z"
+    created: "2024-11-15T04:54:09.586721254Z"
     dependencies:
     - condition: tei.enabled
       name: tei
@@ -1061,7 +1061,7 @@ entries:
       repository: https://zilliztech.github.io/milvus-helm/
       version: 4.2.12
     description: The Helm chart for deploying retriever as microservice
-    digest: efc3542ef4ce5179ff6785656a58271a45a29d0d0bc06482d534240539816a2b
+    digest: 20b2399628a3a2b66ea4521fa570e77e9502eb0f8639360fcd7e41d794b7fe16
     name: retriever-usvc
     type: application
     urls:
@@ -1069,7 +1069,7 @@ entries:
     version: 1.0-dev
   - apiVersion: v2
     appVersion: v0.9
-    created: "2024-11-15T02:17:51.166414516Z"
+    created: "2024-11-15T04:54:09.570745456Z"
     dependencies:
     - condition: autodependency.enabled
       name: tei
@@ -1088,7 +1088,7 @@ entries:
     version: 0.9.0
   - apiVersion: v2
     appVersion: v0.8
-    created: "2024-11-15T02:17:51.165528138Z"
+    created: "2024-11-15T04:54:09.569924678Z"
     dependencies:
     - condition: autodependency.enabled
       name: tei
@@ -1108,7 +1108,7 @@ entries:
   speecht5:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.184514951Z"
+    created: "2024-11-15T04:54:09.589072659Z"
     description: The Helm chart for deploying speecht5 as microservice
     digest: 242fbd719826092aa52f728e6dc60530f55480019b3f7bf75e97b8fd91e3657a
     name: speecht5
@@ -1118,9 +1118,9 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.183884071Z"
+    created: "2024-11-15T04:54:09.588740427Z"
     description: The Helm chart for deploying speecht5 as microservice
-    digest: 8906b7ed783306deca3a64cb8bcd95b2dc0cf5baf18e40e596c38d6b83fca608
+    digest: 0ce13fe1f98de2a070e2678a05019ada6a611a380ba36f892b5bab3d90a5220a
     name: speecht5
     type: application
     urls:
@@ -1128,7 +1128,7 @@ entries:
     version: 1.0-dev
   - apiVersion: v2
     appVersion: v0.9
-    created: "2024-11-15T02:17:51.183481638Z"
+    created: "2024-11-15T04:54:09.588406441Z"
     description: The Helm chart for deploying speecht5 as microservice
     digest: 21d1597a5e01ebfa427a1a1518df9012ab56a68f5401e188c050fb77f92afc40
     name: speecht5
@@ -1138,7 +1138,7 @@ entries:
     version: 0.9.0
   - apiVersion: v2
     appVersion: v0.8
-    created: "2024-11-15T02:17:51.183101758Z"
+    created: "2024-11-15T04:54:09.588077775Z"
     description: The Helm chart for deploying speecht5 as microservice
     digest: 0009fa2eae704108dfdeba8491c8c4ef7b5c617d34c9ab92d6153f5058f53886
     name: speecht5
@@ -1149,7 +1149,7 @@ entries:
   tei:
   - apiVersion: v2
     appVersion: cpu-1.5
-    created: "2024-11-15T02:17:51.186645048Z"
+    created: "2024-11-15T04:54:09.590559174Z"
     description: The Helm chart for HuggingFace Text Embedding Inference Server
     digest: 3c628ed8e4544ddfebfda08f8c8d7f6c21813d70eb965aee8313d389547c3abd
     name: tei
@@ -1159,9 +1159,9 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: cpu-1.5
-    created: "2024-11-15T02:17:51.186253456Z"
+    created: "2024-11-15T04:54:09.590148615Z"
     description: The Helm chart for HuggingFace Text Embedding Inference Server
-    digest: 2a07463bb3b9dcc6b6127f65434e1d83e4aafaf3a59c77789f0a73a6afeeac52
+    digest: 6424f7902c679a80029c7893d30334939dbfa45ec3db179c5907adfa01d14c7c
     name: tei
     type: application
     urls:
@@ -1169,7 +1169,7 @@ entries:
     version: 1.0-dev
   - apiVersion: v2
     appVersion: cpu-1.5
-    created: "2024-11-15T02:17:51.185820686Z"
+    created: "2024-11-15T04:54:09.589744938Z"
     description: The Helm chart for HuggingFace Text Embedding Inference Server
     digest: edf9a50b621a0de457ee73f0ff2acca8595b9e25f83a931946a3280a2330730c
     name: tei
@@ -1179,7 +1179,7 @@ entries:
     version: 0.9.0
   - apiVersion: v2
     appVersion: cpu-1.5
-    created: "2024-11-15T02:17:51.185407824Z"
+    created: "2024-11-15T04:54:09.58940921Z"
     description: The Helm chart for HuggingFace Text Embedding Inference Server
     digest: 98592a803f9be0ed8d65c64d3bf112fde5f7a3465542bb1b833d9771c2a50f5b
     name: tei
@@ -1190,7 +1190,7 @@ entries:
   teirerank:
   - apiVersion: v2
     appVersion: cpu-1.5
-    created: "2024-11-15T02:17:51.188090361Z"
+    created: "2024-11-15T04:54:09.592195679Z"
     description: The Helm chart for HuggingFace Text Embedding Inference Server
     digest: 38eaa50677e59dba95409b8303117832835d086f1b1529e401955164bec95a07
     name: teirerank
@@ -1200,9 +1200,9 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: cpu-1.5
-    created: "2024-11-15T02:17:51.187718816Z"
+    created: "2024-11-15T04:54:09.591783457Z"
     description: The Helm chart for HuggingFace Text Embedding Inference Server
-    digest: ca2ee715e6a562b631c7e62f9d1cb2ee7a51dbafc121dc3103e15ddd6be0aa11
+    digest: d54c0dc817ff57ee3be77220e8346626b29b208ee272b1f5ce72b02c00f79905
     name: teirerank
     type: application
     urls:
@@ -1210,7 +1210,7 @@ entries:
     version: 1.0-dev
   - apiVersion: v2
     appVersion: cpu-1.5
-    created: "2024-11-15T02:17:51.187319269Z"
+    created: "2024-11-15T04:54:09.591322363Z"
     description: The Helm chart for HuggingFace Text Embedding Inference Server
     digest: 758ca89b44f68b7de65363df5344eab2caf28819b851b91055ffd939db05cb83
     name: teirerank
@@ -1220,7 +1220,7 @@ entries:
     version: 0.9.0
   - apiVersion: v2
     appVersion: cpu-1.5
-    created: "2024-11-15T02:17:51.186988961Z"
+    created: "2024-11-15T04:54:09.590923286Z"
     description: The Helm chart for HuggingFace Text Embedding Inference Server
     digest: a71dad468bc3d73c72f795c8bdcda7e7eca33a9c5c8b1630822633f066dac514
     name: teirerank
@@ -1231,7 +1231,7 @@ entries:
   tgi:
   - apiVersion: v2
     appVersion: 2.1.0
-    created: "2024-11-15T02:17:51.189708487Z"
+    created: "2024-11-15T04:54:09.593917364Z"
     description: The Helm chart for HuggingFace Text Generation Inference Server
     digest: b29299318b5b16976cfd72f37059dc156f00ecc51a9fc12b79b88107ec054865
     name: tgi
@@ -1241,9 +1241,9 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: 2.1.0
-    created: "2024-11-15T02:17:51.18922316Z"
+    created: "2024-11-15T04:54:09.593440261Z"
     description: The Helm chart for HuggingFace Text Generation Inference Server
-    digest: fabb25043291454c12039d6c37a0dfa2f40e98daa3c794107341830889d4d405
+    digest: a27305289313a4d0e2ae7b13c02706741cbc03c3f36b09933639a554bd5fa78f
     name: tgi
     type: application
     urls:
@@ -1251,7 +1251,7 @@ entries:
     version: 1.0-dev
   - apiVersion: v2
     appVersion: 2.1.0
-    created: "2024-11-15T02:17:51.188784599Z"
+    created: "2024-11-15T04:54:09.592961353Z"
     description: The Helm chart for HuggingFace Text Generation Inference Server
     digest: 05bb75c6f8b432fc7122221327a3e5582aef8d85649147edeacf76225fe03ee3
     name: tgi
@@ -1261,7 +1261,7 @@ entries:
     version: 0.9.0
   - apiVersion: v2
     appVersion: 2.1.0
-    created: "2024-11-15T02:17:51.188438572Z"
+    created: "2024-11-15T04:54:09.592577945Z"
     description: The Helm chart for HuggingFace Text Generation Inference Server
     digest: cb9df7db9ac41bb75b81e23a25835cd9cefe4e87cc1c88d09817ea4a98dc62d5
     name: tgi
@@ -1272,7 +1272,7 @@ entries:
   tts:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.192152569Z"
+    created: "2024-11-15T04:54:09.5969472Z"
     dependencies:
     - condition: autodependency.enabled
       name: speecht5
@@ -1287,14 +1287,14 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.191549851Z"
+    created: "2024-11-15T04:54:09.596051933Z"
     dependencies:
     - condition: speecht5.enabled
       name: speecht5
       repository: file://../speecht5
       version: 1.0-dev
     description: The Helm chart for deploying tts as microservice
-    digest: f1b9ce30f8d9a2bc88b21076af104f66c2fd15ed5046a00ad205110a7507b6a3
+    digest: 59bc99945766b0267353e4655e583c677601698e07c5744b27a8306af786c268
     name: tts
     type: application
     urls:
@@ -1302,7 +1302,7 @@ entries:
     version: 1.0-dev
   - apiVersion: v2
     appVersion: v0.9
-    created: "2024-11-15T02:17:51.190951523Z"
+    created: "2024-11-15T04:54:09.595315022Z"
     dependencies:
     - condition: autodependency.enabled
       name: speecht5
@@ -1317,7 +1317,7 @@ entries:
     version: 0.9.0
   - apiVersion: v2
     appVersion: v0.8
-    created: "2024-11-15T02:17:51.190352853Z"
+    created: "2024-11-15T04:54:09.594598951Z"
     dependencies:
     - condition: autodependency.enabled
       name: speecht5
@@ -1333,7 +1333,7 @@ entries:
   ui:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.193573877Z"
+    created: "2024-11-15T04:54:09.598323255Z"
     description: Common Helm chart for the UI for various opea workload
     digest: b838bd0e6c6e7568499bdb3c1c763d806972a81334157b92c460fbd8ad8d82b3
     name: ui
@@ -1343,9 +1343,9 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.193112905Z"
+    created: "2024-11-15T04:54:09.597992426Z"
     description: Common Helm chart for the UI for various opea workload
-    digest: 04430355d24969f68fe0514cf3b9f5924cb129c350c9cd8c24eb118b2cc361dc
+    digest: bf19442e3aa9b32f702610cd510a389bd808f2cdb7e35e04a45d381871a8e6f6
     name: ui
     type: application
     urls:
@@ -1354,7 +1354,7 @@ entries:
   visualqna:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.195416343Z"
+    created: "2024-11-15T04:54:09.60028499Z"
     dependencies:
     - name: tgi
       repository: file://../common/tgi
@@ -1367,7 +1367,7 @@ entries:
       repository: file://../common/ui
       version: 1.0-dev
     description: The Helm chart to deploy VisualQnA
-    digest: 3f22ea88dbca6d86c057756571d7c443050127ac9251dadc93a0a52e206c5ba7
+    digest: d6fbd4002e24ef116e776d34a1ad1df080b79ea0c1e4558c1a9a3b8b24be7188
     name: visualqna
     type: application
     urls:
@@ -1376,7 +1376,7 @@ entries:
   vllm:
   - apiVersion: v2
     appVersion: "0.5"
-    created: "2024-11-15T02:17:51.196152751Z"
+    created: "2024-11-15T04:54:09.601063048Z"
     description: The Helm chart for vLLM Inference Server
     digest: 5a23de5bbe427b788ef5ae8c6dc2d812d5574ebada0a01bdd593de6d02d60c1f
     name: vllm
@@ -1386,9 +1386,9 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: "0.5"
-    created: "2024-11-15T02:17:51.195795673Z"
+    created: "2024-11-15T04:54:09.600694818Z"
     description: The Helm chart for vLLM Inference Server
-    digest: d70d3e5cb79440a819a37df97c1dc317a31a5fd912eab0d4edc8a350be6a50cc
+    digest: 5d40c7eae92f24a1dde0e73d7474f88ab8eb2d229940a776c748a26d5e7917b1
     name: vllm
     type: application
     urls:
@@ -1397,7 +1397,7 @@ entries:
   web-retriever:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.198742695Z"
+    created: "2024-11-15T04:54:09.603840941Z"
     dependencies:
     - condition: autodependency.enabled
       name: tei
@@ -1412,14 +1412,14 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.198087088Z"
+    created: "2024-11-15T04:54:09.60313555Z"
     dependencies:
     - condition: tei.enabled
       name: tei
       repository: file://../tei
       version: 1.0-dev
     description: The Helm chart for deploying web retriever as microservice
-    digest: f1d328de49d12b479e28afd6c5663b4645584137c85b81b16053dbfc9b807bb5
+    digest: 27190a5b6e465c8f11059df422041207ecac434a948b596a6356d98533e664c0
     name: web-retriever
     type: application
     urls:
@@ -1427,7 +1427,7 @@ entries:
     version: 1.0-dev
   - apiVersion: v2
     appVersion: v0.9
-    created: "2024-11-15T02:17:51.197360038Z"
+    created: "2024-11-15T04:54:09.602433535Z"
     dependencies:
     - condition: autodependency.enabled
       name: tei
@@ -1442,7 +1442,7 @@ entries:
     version: 0.9.0
   - apiVersion: v2
     appVersion: v0.8
-    created: "2024-11-15T02:17:51.196759125Z"
+    created: "2024-11-15T04:54:09.601678531Z"
     dependencies:
     - condition: autodependency.enabled
       name: tei
@@ -1458,7 +1458,7 @@ entries:
   whisper:
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.200085536Z"
+    created: "2024-11-15T04:54:09.606022149Z"
     description: The Helm chart for deploying whisper as microservice
     digest: cc736fee97bfb8fa4c09cf2288a3f7c03079dbb4894bf74265c8745306163336
     name: whisper
@@ -1468,9 +1468,9 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: v1.0
-    created: "2024-11-15T02:17:51.199699865Z"
+    created: "2024-11-15T04:54:09.605628021Z"
     description: The Helm chart for deploying whisper as microservice
-    digest: aae71b2c10c63fb93de910d1c6a5662e5681ee7226c8c840727cddc4eaf00418
+    digest: dc8ec8a50746d094ad6ab4224194e63bcc3c8d59f6ded64696412644e435486d
     name: whisper
     type: application
     urls:
@@ -1478,7 +1478,7 @@ entries:
     version: 1.0-dev
   - apiVersion: v2
     appVersion: v0.9
-    created: "2024-11-15T02:17:51.199378133Z"
+    created: "2024-11-15T04:54:09.604763169Z"
     description: The Helm chart for deploying whisper as microservice
     digest: 3de26cf77a68ab795f22eca67433857e3e1457692211025715344d68c81760db
     name: whisper
@@ -1488,7 +1488,7 @@ entries:
     version: 0.9.0
   - apiVersion: v2
     appVersion: v0.8
-    created: "2024-11-15T02:17:51.199062863Z"
+    created: "2024-11-15T04:54:09.604165449Z"
     description: The Helm chart for deploying whisper as microservice
     digest: d835f277b41a122febe80a576db0c95308b0bb954b2f559102a2019f15df53db
     name: whisper
@@ -1496,4 +1496,4 @@ entries:
     urls:
     - whisper-0.8.0.tgz
     version: 0.8.0
-generated: "2024-11-15T02:17:51.014847822Z"
+generated: "2024-11-15T04:54:09.412577622Z"
