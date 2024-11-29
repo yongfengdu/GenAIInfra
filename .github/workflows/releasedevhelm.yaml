@@ -42,5 +42,5 @@ jobs:
             echo "Updating $chart"
             helm dependency update ${chart}
             helm package $chart
-            helm push ${chart}-0-latest.tgz oci://ghcr.io/${{ inputs.repo }}/charts
+            helm push ${chart}-0-latest.tgz oci://ghcr.io/yongfengdu/charts
           done
