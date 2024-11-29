@@ -1,0 +1,45 @@
+name: Update the released helm charts version
+
+on:  
+  pull_request:  
+    branches:
+      - releasedev
+    types: [closed]
+    paths:
+      - helm-charts/**
+env:
+  CHARTS_DIR: "helm-charts"
+
+jobs:  
+  run-on-merge:  
+    if: github.event.pull_request.merged == true  
+    runs-on: ubuntu-latest  
+
+    steps:  
+      - name: Checkout Code  
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+        
+      - name: Get the modified charts list
+        run: |
+          echo "This job runs after a PR is merged!"
+          if grep -r '^version: ' `find helm-charts/ -name "Chart.yaml"` | grep -v "0-latest"; then
+            echo "Version check failed, only update 0-latest"
+            exit 1
+          fi
+
+          common_charts=$(git diff --name-only ${base_commit} ${merged_commit} | \
+          grep "^$CHARTS_DIR/common" | \
+          grep -vE 'README.md|*.sh' | \
+          cut -d'/' -f3 | sort -u )
+          echo "Charts to be updated: $common_charts"
+          echo "${{ secrets.ACTION_TOKEN }}" | helm registry login ghcr.io -u test --password-stdin
+          cd $CHARTS_DIR/common
+          for chart in ${common_charts}; do
+            echo "Updating $chart"
+            helm dependency update ${chart}
+            helm package $chart
+            helm push ${chart} oci://ghcr.io/${{ inputs.repo }}/charts
+          done
