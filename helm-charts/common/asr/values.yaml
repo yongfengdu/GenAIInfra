@@ -6,6 +6,7 @@
 # Declare variables to be passed into your templates.
 # Test 1
 # Test more
+# Test 2
 
 whisper:
   enabled: false
