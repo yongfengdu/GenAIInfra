@@ -29,8 +29,20 @@ data:
   {{- else }}
   MMEI_EMBEDDING_ENDPOINT: "http://{{ .Release.Name }}-mm-embedding"
   {{- end }}
+  {{- else if eq "OVMS" .Values.EMBEDDING_BACKEND }}
+  {{- if .Values.OVMS_EMBEDDING_ENDPOINT }}
+  OVMS_EMBEDDING_ENDPOINT: {{ tpl .Values.OVMS_EMBEDDING_ENDPOINT . | quote}}
+  {{- else if not .Values.LOCAL_EMBEDDING_MODEL }}
+  OVMS_EMBEDDING_ENDPOINT: "http://{{ .Release.Name }}-tei/v3"
+  {{- end }}
+  OVMS_EMBEDDING_MODEL: {{ .Values.OVMS_EMBEDDING_MODEL }}
   {{- else }}
   {{- cat "Invalid EMBEDDING_BACKEND:" .Values.EMBEDDING_BACKEND | fail }}
+  {{- end }}
+  TRANSFORMERS_CACHE: "/tmp/transformers_cache"
+  HF_HOME: "/tmp/.cache/huggingface"
+  {{- if .Values.global.HF_ENDPOINT }}
+  HF_ENDPOINT: {{ .Values.global.HF_ENDPOINT | quote}}
   {{- end }}
   http_proxy: {{ .Values.global.http_proxy | quote }}
   https_proxy: {{ .Values.global.https_proxy | quote }}

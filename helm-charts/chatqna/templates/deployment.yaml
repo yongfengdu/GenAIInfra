@@ -65,9 +65,17 @@ spec:
             - name: GUARDRAIL_SERVICE_PORT
               value: "9090"
             - name: LLM_SERVICE_HOST_IP
+              {{- if .Values.LLM_SERVICE_HOST_IP }}
+              value: {{ .Values.LLM_SERVICE_HOST_IP }}
+              {{- else }}
               value: {{ .Release.Name }}-llm-uservice
+              {{- end }}
             - name: LLM_SERVICE_PORT
+              {{- if .Values.LLM_SERVICE_PORT }}
+              value: {{ .Values.LLM_SERVICE_PORT }}
+              {{- else }}
               value: "9000"
+              {{- end }}
             - name: RERANK_SERVICE_HOST_IP
               value: {{ .Release.Name }}-reranking-usvc
             - name: RERANK_SERVICE_PORT

@@ -46,6 +46,10 @@ dependencies:
     version: 0-latest
     repository: "file://../common/redis-vector-db"
     condition: redis-vector-db.enabled
+  - name: milvus
+    version: 4.2.12
+    repository: https://zilliztech.github.io/milvus-helm/
+    condition: milvus.enabled
   - name: retriever-usvc
     version: 0-latest
     repository: "file://../common/retriever-usvc"
@@ -59,5 +63,11 @@ dependencies:
   - name: nginx
     version: 0-latest
     repository: "file://../common/nginx"
+  - name: mongodb
+    version: 0-latest
+    repository: "file://../common/mongodb"
+  - name: chathistory-usvc
+    version: 0-latest
+    repository: "file://../common/chathistory-usvc"
 version: 0-latest
 appVersion: "v1.0"

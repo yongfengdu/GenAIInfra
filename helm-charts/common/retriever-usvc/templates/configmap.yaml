@@ -13,6 +13,12 @@ data:
   {{- else if not .Values.LOCAL_EMBEDDING_MODEL }}
   TEI_EMBEDDING_ENDPOINT: "http://{{ .Release.Name }}-tei"
   {{- end }}
+  {{- if .Values.OVMS_EMBEDDING_ENDPOINT }}
+  OVMS_EMBEDDING_ENDPOINT: {{ tpl .Values.OVMS_EMBEDDING_ENDPOINT . | quote}}
+  {{- else if not .Values.LOCAL_EMBEDDING_MODEL }}
+  OVMS_EMBEDDING_ENDPOINT: "http://{{ .Release.Name }}-tei"
+  {{- end }}
+  OVMS_EMBEDDING_MODEL: {{ .Values.OVMS_EMBEDDING_MODEL }}
   {{- if eq "REDIS" .Values.RETRIEVER_BACKEND }}
   RETRIEVER_COMPONENT_NAME: "OPEA_RETRIEVER_REDIS"
   {{- if .Values.REDIS_HOST }}

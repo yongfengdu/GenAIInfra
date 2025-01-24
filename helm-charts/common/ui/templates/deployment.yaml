@@ -68,7 +68,18 @@ spec:
           volumeMounts:
             - mountPath: /tmp
               name: tmp
+            {{- if .Values.FILEPATH }}
+            - mountPath: /tmp/files
+              name: filepath
+            {{- end }}
       volumes:
+        {{- if .Values.FILEPATH }}
+        - name: filepath
+          hostPath:
+            # claimName: {{ .Values.WORKSPACE }}
+            path: {{ .Values.FILEPATH }}
+            type: Directory
+        {{- end }}
         - name: tmp
           emptyDir: {}
       {{- with .Values.nodeSelector }}

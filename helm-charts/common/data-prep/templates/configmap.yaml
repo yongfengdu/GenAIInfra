@@ -8,11 +8,17 @@ metadata:
   labels:
     {{- include "data-prep.labels" . | nindent 4 }}
 data:
-  {{- if .Values.TEI_EMBEDDING_ENDPOINT }}
-  TEI_EMBEDDING_ENDPOINT: {{ tpl .Values.TEI_EMBEDDING_ENDPOINT . | quote}}
+  #  {{- if .Values.TEI_EMBEDDING_ENDPOINT }}
+  #  TEI_EMBEDDING_ENDPOINT: {{ tpl .Values.TEI_EMBEDDING_ENDPOINT . | quote}}
+  #  {{- else if not .Values.LOCAL_EMBEDDING_MODEL }}
+  #  TEI_EMBEDDING_ENDPOINT: "http://{{ .Release.Name }}-tei"
+  #  {{- end }}
+  {{- if .Values.OVMS_EMBEDDING_ENDPOINT }}
+  OVMS_EMBEDDING_ENDPOINT: {{ tpl .Values.OVMS_EMBEDDING_ENDPOINT . | quote}}
   {{- else if not .Values.LOCAL_EMBEDDING_MODEL }}
-  TEI_EMBEDDING_ENDPOINT: "http://{{ .Release.Name }}-tei"
+  OVMS_EMBEDDING_ENDPOINT: "http://{{ .Release.Name }}-tei/v3"
   {{- end }}
+  OVMS_EMBEDDING_MODEL: {{ .Values.OVMS_EMBEDDING_MODEL }}
   {{- if eq "REDIS" .Values.DATAPREP_BACKEND }}
   DATAPREP_COMPONENT_NAME: "OPEA_DATAPREP_REDIS"
   {{- if .Values.REDIS_HOST }}

@@ -19,6 +19,13 @@ data:
   RERANK_COMPONENT_NAME: "OPEA_VIDEO_RERANKING"
   CHUNK_DURATION: {{ .Values.CHUNK_DURATION | quote }}
   FILE_SERVER_ENDPOINT: {{ .Values.FILE_SERVER_ENDPOINT | quote }}
+  {{- else if eq "OVMS" .Values.RERANK_BACKEND }}
+  {{- if .Values.OVMS_RERANKING_ENDPOINT }}
+  OVMS_RERANKING_ENDPOINT: {{ tpl .Values.OVMS_RERANKING_ENDPOINT . | quote}}
+  {{- else }}
+  OVMS_RERANKING_ENDPOINT: "http://{{ .Release.Name }}-teirerank/v3"
+  {{- end }}
+  OVMS_RERANKING_MODEL: {{ .Values.OVMS_RERANKING_MODEL }}
   {{- else }}
   {{- cat "Invalid RERANK_BACKEND:" .Values.RERANK_BACKEND | fail }}
   {{- end }}

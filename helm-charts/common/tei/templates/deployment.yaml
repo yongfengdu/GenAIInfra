@@ -87,9 +87,17 @@ spec:
           {{- if .Values.image.pullPolicy }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           {{- end }}
+          {{- if .Values.extraCmdArgs }}
           args:
-            - "--auto-truncate"
+            {{- range .Values.extraCmdArgs }}
+            - {{ . | quote }}
+            {{- end }}
+          {{- end }}
+          #args:
+          #  - "--auto-truncate"
           volumeMounts:
+            - mountPath: /workspace
+              name: workspace
             - mountPath: /data
               name: model-volume
             - mountPath: /dev/shm
@@ -115,6 +123,11 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
+        - name: workspace
+          hostPath:
+            # claimName: {{ .Values.WORKSPACE }}
+            path: {{ .Values.WORKSPACE }}
+            type: Directory
         - name: model-volume
           {{- if .Values.global.modelUsePVC }}
           persistentVolumeClaim:

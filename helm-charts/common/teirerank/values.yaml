@@ -27,7 +27,7 @@ image:
   # pullPolicy: ""
   # Overrides the image tag whose default is the chart appVersion.
   tag: "cpu-1.5"
-
+extraCmdArgs: ["--auto-truncate"]
 # empty for CPU
 accelDevice: ""
 
@@ -80,28 +80,28 @@ resources:
     cpu: 100m
     memory: 128Mi
 
-livenessProbe:
-  httpGet:
-    path: /health
-    port: http
-  initialDelaySeconds: 8
-  periodSeconds: 8
-  timeoutSeconds: 4
-  failureThreshold: 24
-readinessProbe:
-  httpGet:
-    path: /health
-    port: http
-  initialDelaySeconds: 8
-  periodSeconds: 8
-  timeoutSeconds: 4
-startupProbe:
-  httpGet:
-    path: /health
-    port: http
-  initialDelaySeconds: 5
-  periodSeconds: 5
-  failureThreshold: 120
+# livenessProbe:
+#   httpGet:
+#     path: /health
+#     port: http
+#   initialDelaySeconds: 8
+#   periodSeconds: 8
+#   timeoutSeconds: 4
+#   failureThreshold: 24
+# readinessProbe:
+#   httpGet:
+#     path: /health
+#     port: http
+#   initialDelaySeconds: 8
+#   periodSeconds: 8
+#   timeoutSeconds: 4
+# startupProbe:
+#   httpGet:
+#     path: /health
+#     port: http
+#   initialDelaySeconds: 5
+#   periodSeconds: 5
+#   failureThreshold: 120
 
 nodeSelector: {}
 

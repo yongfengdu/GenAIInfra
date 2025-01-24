@@ -1,0 +1,144 @@
+# Copyright (C) 2025 Intel Corporation
+# SPDX-License-Identifier: Apache-2.0
+
+image:
+  repository: gar-registry.caas.intel.com/opea-downstream/opea/chatqna
+  tag: ekba-v1.0
+LLM_SERVICE_HOST_IP: ""
+LLM_SERVICE_PORT: ""
+
+# vector db
+redis-vector-db:
+  enabled: false
+
+milvus:
+  enabled: true
+  # Milvus config for standalone mode with no PVC which has minimum requirements for the K8s cluster.
+  # Check https://github.com/zilliztech/milvus-helm/tree/milvus-4.2.12/charts/milvus for more production level configuration.
+  cluster:
+    enabled: false
+  etcd:
+    replicaCount: 1
+    # persistence:
+    #   enabled: false
+  pulsar:
+    enabled: false
+  minio:
+    mode: standalone
+    # persistence:
+    #   enabled: false
+  # standalone:
+  #   persistence:
+  #     enabled: false
+
+data-prep:
+  image:
+    repository: gar-registry.caas.intel.com/opea-downstream/opea/dataprep-milvus
+    tag: ekba-v1.0
+  port: 6010
+  OVMS_EMBEDDING_ENDPOINT: ""
+  OVMS_EMBEDDING_MODEL: "BAAI/bge-large-zh-v1.5"
+
+  FILEPATH: /mnt/files
+  DATAPREP_BACKEND: "MILVUS"
+  # text embedding inference service URL, e.g. http://<service-name>:<port>
+  # TEI_EMBEDDING_ENDPOINT: "http://data-prep-tei:80"
+  # milvus DB configurations
+  # MILVUS_HOST: "data-prep-milvus"
+  MILVUS_PORT: 19530
+  COLLECTION_NAME: "rag_milvus"
+
+embedding-usvc:
+  enabled: true
+  image:
+    repository: gar-registry.caas.intel.com/opea-downstream/opea/embedding-ovms
+    tag: ekba-v1.0
+  EMBEDDING_BACKEND: "OVMS"
+  OVMS_EMBEDDING_ENDPOINT: ""
+  OVMS_EMBEDDING_MODEL: "BAAI/bge-large-zh-v1.5"
+tei:
+  image:
+    repository: gar-registry.caas.intel.com/opea-downstream/openvino/model_server
+    tag: ekba-v1.0
+  port: "8000"
+  livenessProbe: {}
+  readinessProbe: {}
+  startupProbe: {}
+  extraCmdArgs: ["--port","9000","--rest_port","8000","--config_path","/workspace/config.json"]
+  WORKSPACE: /mnt/embeddings
+  #  EMBEDDING_MODEL_ID: "BAAI/bge-large-zh-v1.5"
+retriever-usvc:
+  image:
+    repository: gar-registry.caas.intel.com/opea-downstream/opea/retriever-milvus
+    tag: ekba-v1.0
+  RETRIEVER_BACKEND: "MILVUS"
+  OVMS_EMBEDDING_ENDPOINT: ""
+  OVMS_EMBEDDING_MODEL: "BAAI/bge-large-zh-v1.5"
+
+reranking-usvc:
+  image:
+    repository: gar-registry.caas.intel.com/opea-downstream/opea/ovms_reranking
+    tag: ekba-v1.0
+  enabled: true
+  RERANK_BACKEND: "OVMS"
+  OVMS_RERANKING_ENDPOINT: ""
+  OVMS_RERANKING_MODEL: "BAAI/bge-reranker-large"
+teirerank:
+  image:
+    repository: gar-registry.caas.intel.com/opea-downstream/openvino/model_server
+    tag: ekba-v1.0
+  port: "8000"
+  livenessProbe: {}
+  readinessProbe: {}
+  startupProbe: {}
+  extraCmdArgs: ["--port","9000","--rest_port","8000","--config_path","/workspace/config.json"]
+  WORKSPACE: /mnt/reranker_models
+
+chatqna-ui:
+  image:
+    repository: gar-registry.caas.intel.com/opea-downstream/opea/chatqna-conversation-ui
+    tag: ekba-v1.0
+  containerPort: "80"
+  FILEPATH: /mnt/files
+    #APP_BACKEND_SERVICE_ENDPOINT: ${APP_BACKEND_SERVICE_ENDPOINT}
+    #APP_DATA_PREP_SERVICE_URL: ${APP_DATA_PREP_SERVICE_URL}
+    #APP_DATA_PREP_GET_FILE_URL: ${APP_DATA_PREP_GET_FILE_URL}
+    #APP_DATA_PREP_DELETE_FILE_URL: ${APP_DATA_PREP_DELETE_FILE_URL}
+    #APP_CHAT_HISTORY_CREATE_URL: ${APP_CHAT_HISTORY_CREATE_URL}
+    #APP_CHAT_HISTORY_GET_URL: ${APP_CHAT_HISTORY_GET_URL}
+    #APP_CHAT_HISTORY_DELETE_URL: ${APP_CHAT_HISTORY_DELETE_URL}
+  # chatQnA backend service URL, default to Mega backend service
+  BACKEND_SERVICE_ENDPOINT: "/v1/chatqna"
+  # data preparation service URL, default to Mega data preparation service
+  DATAPREP_SERVICE_ENDPOINT: "/v1/dataprep"
+  # data preparation get file service URL, default to Mega data preparation service
+  DATAPREP_GET_FILE_ENDPOINT: "/v1/dataprep/get_file"
+  DATAPREP_GET_COLLECTIONS_ENDPOINT: "/v1/dataprep/get_collections"
+  # data preparation delete file service URL, default to Mega data preparation service
+  DATAPREP_DELETE_FILE_ENDPOINT: "/v1/dataprep/delete_file"
+  CHATHISTORY_CREATE_ENDPOINT: "/v1/chathistory/create"
+  CHATHISTORY_GET_ENDPOINT: "/v1/chathistory/get"
+  CHATHISTORY_DELETE_ENDPOINT: "/v1/chathistory/delete"
+
+nginx:
+  image:
+    repository: gar-registry.caas.intel.com/opea-downstream/opea/nginx
+    tag: ekba-v1.0
+chathistory-usvc:
+  image:
+    repository: gar-registry.caas.intel.com/opea-downstream/opea/chathistory-mongo-server
+    tag: ekba-v1.0
+
+llm-uservice:
+  enabled: true
+  image:
+    repository: gar-registry.caas.intel.com/opea-downstream/opea/llm-vllm
+    tag: ekba-v1.0
+  TEXTGEN_BACKEND: "vLLM"
+  # LLM_MODEL_ID: meta-llama/Llama-2-7b-chat-hf
+  LLM_MODEL_ID: Qwen/Qwen2-72B-Instruct
+  LLM_ENDPOINT: http://10.239.75.251:8008
+vllm:
+  enabled: false
+  #LLM_MODEL_ID: Qwen/Qwen2-72B-Instruct
+  LLM_MODEL_ID: meta-llama/Llama-2-7b-chat-hf

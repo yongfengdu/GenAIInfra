@@ -79,6 +79,8 @@ spec:
               containerPort: {{ .Values.port }}
               protocol: TCP
           volumeMounts:
+            - mountPath: /home/user/comps/dataprep/milvus-enhance/langchain/uploaded_files
+              name: filepath
             - mountPath: /tmp
               name: tmp
           {{- if .Values.livenessProbe }}
@@ -96,6 +98,11 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
+        - name: filepath
+          hostPath:
+            # claimName: {{ .Values.WORKSPACE }}
+            path: {{ .Values.FILEPATH }}
+            type: Directory
         - name: tmp
           emptyDir: {}
       {{- with .Values.nodeSelector }}

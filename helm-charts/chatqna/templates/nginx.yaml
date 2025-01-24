@@ -15,3 +15,5 @@ data:
   BACKEND_SERVICE_PORT: {{ .Values.service.port | quote }}
   DATAPREP_SERVICE_IP: {{ include "data-prep.fullname" (index .Subcharts "data-prep") | quote }}
   DATAPREP_SERVICE_PORT: {{ index .Values "data-prep" "service" "port" | quote }}
+  CHATHISTORY_SERVICE_IP: {{ include "chathistory-usvc.fullname" (index .Subcharts "chathistory-usvc") | quote }}
+  CHATHISTORY_SERVICE_PORT: {{ index .Values "chathistory-usvc" "service" "port" | quote }}

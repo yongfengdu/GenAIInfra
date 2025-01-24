@@ -55,9 +55,11 @@ data:
   {{- end }}
   {{- if .Values.LLM_ENDPOINT }}
   LLM_ENDPOINT: {{ tpl .Values.LLM_ENDPOINT . | quote }}
+  vLLM_ENDPOINT: {{ tpl .Values.LLM_ENDPOINT . | quote }}
   {{- end }}
   {{- if .Values.LLM_MODEL_ID }}
   LLM_MODEL_ID: {{ .Values.LLM_MODEL_ID | quote }}
+  LLM_MODEL: {{ .Values.LLM_MODEL_ID | quote }}
   {{- end }}
   HF_HOME: "/tmp/.cache/huggingface"
   HF_TOKEN: {{ .Values.global.HUGGINGFACEHUB_API_TOKEN | quote }}
