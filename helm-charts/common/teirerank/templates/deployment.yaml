@@ -100,8 +100,10 @@ spec:
           #args:
           #  - "--auto-truncate"
           volumeMounts:
+            {{- if .Values.WORKSPACE }}
             - mountPath: /workspace
               name: workspace
+            {{- end }}
             - mountPath: /data
               name: model-volume
             - mountPath: /dev/shm
@@ -127,11 +129,14 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
+        {{- if .Values.WORKSPACE }}
         - name: workspace
-          hostPath:
-            # claimName: {{ .Values.WORKSPACE }}
-            path: {{ .Values.WORKSPACE }}
-            type: Directory
+          persistentVolumeClaim:
+            claimName: {{ .Values.WORKSPACE }}
+          # hostPath:
+          #   path: {{ .Values.WORKSPACE }}
+          #   type: Directory
+        {{- end }}
         - name: model-volume
           {{- if .Values.global.modelUsePVC }}
           persistentVolumeClaim:

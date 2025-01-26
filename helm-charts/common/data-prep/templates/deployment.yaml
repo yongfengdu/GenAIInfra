@@ -99,10 +99,11 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
         - name: filepath
-          hostPath:
-            # claimName: {{ .Values.WORKSPACE }}
-            path: {{ .Values.FILEPATH }}
-            type: Directory
+          persistentVolumeClaim:
+            claimName: {{ .Values.FILEPATH }}
+          # hostPath:
+          #   path: {{ .Values.FILEPATH }}
+          #   type: Directory
         - name: tmp
           emptyDir: {}
       {{- with .Values.nodeSelector }}

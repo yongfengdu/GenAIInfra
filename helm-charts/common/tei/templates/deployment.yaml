@@ -124,10 +124,11 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
         - name: workspace
-          hostPath:
-            # claimName: {{ .Values.WORKSPACE }}
-            path: {{ .Values.WORKSPACE }}
-            type: Directory
+          persistentVolumeClaim:
+            claimName: {{ .Values.WORKSPACE }}
+          # hostPath:
+          #   path: {{ .Values.WORKSPACE }}
+          #   type: Directory
         - name: model-volume
           {{- if .Values.global.modelUsePVC }}
           persistentVolumeClaim:

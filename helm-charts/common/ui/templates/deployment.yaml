@@ -75,10 +75,11 @@ spec:
       volumes:
         {{- if .Values.FILEPATH }}
         - name: filepath
-          hostPath:
-            # claimName: {{ .Values.WORKSPACE }}
-            path: {{ .Values.FILEPATH }}
-            type: Directory
+          persistentVolumeClaim:
+            claimName: {{ .Values.FILEPATH }}
+          # hostPath:
+          #   path: {{ .Values.FILEPATH }}
+          #   type: Directory
         {{- end }}
         - name: tmp
           emptyDir: {}
