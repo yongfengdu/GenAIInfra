@@ -48,6 +48,12 @@ data-prep:
   # MILVUS_HOST: "data-prep-milvus"
   MILVUS_PORT: 19530
   COLLECTION_NAME: "rag_milvus"
+  readinessProbe:
+    httpGet:
+      path: v1/health_check
+      port: data-prep
+    initialDelaySeconds: 5
+    periodSeconds: 3600
 
 embedding-usvc:
   enabled: true

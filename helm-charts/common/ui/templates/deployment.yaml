@@ -69,7 +69,7 @@ spec:
             - mountPath: /tmp
               name: tmp
             {{- if .Values.FILEPATH }}
-            - mountPath: /tmp/files
+            - mountPath: /tmp/upload_files
               name: filepath
             {{- end }}
       volumes:

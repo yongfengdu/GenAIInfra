@@ -14,5 +14,6 @@ spec:
       targetPort: nginx
       protocol: TCP
       name: nginx
+      nodePort: 32588
   selector:
     {{- include "nginx.selectorLabels" . | nindent 4 }}
