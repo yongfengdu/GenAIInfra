@@ -159,7 +159,7 @@ llm-uservice:
   enabled: true
   image:
     repository: gar-registry.caas.intel.com/opea-downstream/opea/llm-vllm
-    tag: ekba-v1.1
+    tag: ekba-v1.0
   TEXTGEN_BACKEND: "vLLM"
   # LLM_MODEL_ID: meta-llama/Llama-2-7b-chat-hf
   LLM_MODEL_ID: Qwen/Qwen2-72B-Instruct
