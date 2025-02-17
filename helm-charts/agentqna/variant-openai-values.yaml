@@ -5,11 +5,23 @@
 # by overriding their subchart values
 
 supervisor:
+  # OpenAI Compatible API without Authentication
   llm_endpoint_url: http://172.21.164.17
   OPENAI_API_KEY: EMPTY
+  # Use OpenAI KEY
+  # llm_engine: openai
+  # OPENAI_API_KEY: YourOpenAIKey
 ragagent:
+  # OpenAI Compatible API without Authentication
   llm_endpoint_url: http://172.21.164.17
   OPENAI_API_KEY: EMPTY
+  # Use OpenAI KEY
+  # llm_engine: openai
+  # OPENAI_API_KEY: YourOpenAIKey
 sqlagent:
+  # OpenAI Compatible API without Authentication
   llm_endpoint_url: http://172.21.164.17
   OPENAI_API_KEY: EMPTY
+  # Use OpenAI KEY
+  # llm_engine: openai
+  # OPENAI_API_KEY: YourOpenAIKey
