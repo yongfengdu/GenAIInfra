@@ -8,6 +8,7 @@ supervisor:
   # OpenAI Compatible API without Authentication
   llm_endpoint_url: http://172.21.164.17
   OPENAI_API_KEY: EMPTY
+  model: deepseek-ai/DeepSeek-R1-Distill-Llama-70B
   # Use OpenAI KEY
   # llm_engine: openai
   # OPENAI_API_KEY: YourOpenAIKey
@@ -15,6 +16,7 @@ ragagent:
   # OpenAI Compatible API without Authentication
   llm_endpoint_url: http://172.21.164.17
   OPENAI_API_KEY: EMPTY
+  model: deepseek-ai/DeepSeek-R1-Distill-Llama-70B
   # Use OpenAI KEY
   # llm_engine: openai
   # OPENAI_API_KEY: YourOpenAIKey
@@ -22,6 +24,7 @@ sqlagent:
   # OpenAI Compatible API without Authentication
   llm_endpoint_url: http://172.21.164.17
   OPENAI_API_KEY: EMPTY
+  model: deepseek-ai/DeepSeek-R1-Distill-Llama-70B
   # Use OpenAI KEY
   # llm_engine: openai
   # OPENAI_API_KEY: YourOpenAIKey
