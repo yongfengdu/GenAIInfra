@@ -74,19 +74,30 @@ supervisor:
 #  REDIS_URL_VECTOR: $REDIS_URL_VECTOR
 #  REDIS_URL_KV: $REDIS_URL_KV
 #  TEI_EMBEDDING_ENDPOINT: $TEI_EMBEDDING_ENDPOINT
+docsum:
+  image:
+    repository: opea/llm-docsum
+  DOCSUM_BACKEND: "vLLM"
+  LLM_MODEL_ID: "meta-llama/Llama-3.3-70B-Instruct"
+  MAX_INPUT_TOKENS: 2048
+  MAX_TOTAL_TOKENS: 4096
+# tei:
+# redis-vector-db:
+# redis-kv-store:
+data-prep:
+  DATAPREP_BACKEND: "REDISFINANCE"
+  
+agent-ui:
+  image:
+    repository: opea/agent-ui
+  containerPort: 8080
+  service:
+    type: NodePort
 
 vllm:
   enabled: true
   LLM_MODEL_ID: "meta-llama/Meta-Llama-3-8B-Instruct"
   extraCmdArgs: ["--max-seq-len-to-capture", "16384", "--enable-auto-tool-choice", "--tool-call-parser", "llama3_json"]
-
-agent-ui:
-  image:
-    repository: opea/agent-ui
-    tag: "latest"
-  containerPort: 8080
-  service:
-    type: NodePort
 
 global:
   http_proxy: ""
