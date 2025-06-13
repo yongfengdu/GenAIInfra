@@ -1,0 +1,76 @@
+# Copyright (C) 2024 Intel Corporation
+# SPDX-License-Identifier: Apache-2.0
+
+replicaCount: 1
+
+image:
+  repository: neo4j
+  tag: "5.26.8"
+  # pullPolicy: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: false
+  automount: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext:
+  readOnlyRootFilesystem: true
+  allowPrivilegeEscalation: false
+  runAsNonRoot: true
+  runAsUser: 1000
+  capabilities:
+    drop:
+    - ALL
+  seccompProfile:
+    type: RuntimeDefault
+
+service:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 7474
+      targetPort: 7474
+      protocol: TCP
+    - name: bolt
+      port: 7687
+      targetPort: 7687
+      protocol: TCP
+
+persistence:
+  enabled: true
+  storageClass: ""
+  accessMode: ReadWriteOnce
+  size: 10Gi
+  annotations: {}
+
+env:
+  NEO4J_AUTH: "neo4j/password"
+  NEO4J_PLUGINS: '["apoc"]'
+  NEO4J_apoc_export_file_enabled: "true"
+  NEO4J_apoc_import_file_enabled: "true"
+  NEO4J_apoc_import_file_use__neo4j__config: "true"
+  NEO4J_dbms_security_procedures_unrestricted: "apoc.*"
+  NEO4J_server_config_strict__validation_enabled: "false"
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 512Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+global:
+  sharedSAName: ""
